@@ -58,6 +58,7 @@ from .ExpressionBases import (
 from .LocalsScopes import GlobalsDictHandle
 from .NodeBases import StatementChildHavingBase
 from .NodeMakingHelpers import makeRaiseExceptionReplacementExpression
+from .PackageResourceNodes import ExpressionPkglibGetDataRef
 from .shapes.BuiltinTypeShapes import tshape_module, tshape_module_builtin
 
 # These module are supported in code generation to be imported the hard way.
@@ -142,9 +143,12 @@ hard_modules_trust = {
     "importlib": module_importlib_trust,
     "_frozen_importlib": {},
     "_frozen_importlib_external": {},
-    "pkgutil": {"get_data": trust_exist},
+    "pkgutil": {"get_data": trust_node},
     "functools": {"partial": trust_exist},
 }
+
+
+trust_node_factory[("pkgutil", "get_data")] = ExpressionPkglibGetDataRef
 
 
 def isHardModuleWithoutSideEffect(module_name):

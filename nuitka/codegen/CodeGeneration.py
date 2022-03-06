@@ -241,6 +241,7 @@ from .OperationCodes import (
     generateOperationNotCode,
     generateOperationUnaryCode,
 )
+from .PackageResourceCodes import generatePkglibGetDataCallCode
 from .PrintCodes import generatePrintNewlineCode, generatePrintValueCode
 from .RaisingCodes import (
     generateRaiseCode,
@@ -778,6 +779,7 @@ addExpressionDispatchDict(
         "EXPRESSION_LOCALS_VARIABLE_REF": generateLocalsDictVariableRefCode,
         "EXPRESSION_RAISE_EXCEPTION": generateRaiseExpressionCode,
         "EXPRESSION_NUITKA_LOADER_CREATION": generateNuitkaLoaderCreationCode,
+        "EXPRESSION_PKGLIB_GET_DATA_CALL": generatePkglibGetDataCallCode,
     }
 )
 
